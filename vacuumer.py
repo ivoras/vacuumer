@@ -59,7 +59,7 @@ def main():
     user_id = cur.fetchone()[0]
 
     cur.execute('SELECT datname FROM pg_database WHERE datdba=%s', (user_id, ))
-    databases = [row[0] for row in cur.fetchall()]
+    databases = sorted([row[0] for row in cur.fetchall()])
 
     print "Discovered %d databases: %s" % (len(databases), ", ".join(databases))
 
